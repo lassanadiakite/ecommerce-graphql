@@ -1,0 +1,76 @@
+type User {
+  id: ID! @id
+  firstName: String!
+  lastName: String!
+  email: String! @unique
+  password: String!
+  role: Role @default(value: USER)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  card: Card
+  categories: [Category!]!  
+  comments: [Comment!]! @relation(name: "CommentsByUser", onDelete: CASCADE)
+  products: [Product]!
+  posts: [Post]!
+}
+
+type Post {
+  id: ID! @id
+  content: String!
+  author: User!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+enum Role {
+  USER
+  ADMIN
+  SELLER
+}
+
+type Product {
+id: ID! @id
+categoryId: Category!
+author: User!
+cards: [Card]  @relation(name: "CardProduct")
+comments: [Comment] @relation(name: "ProductComments", onDelete: CASCADE)
+name: String!
+price: Float!
+reference: String!
+description: String
+quantite: Float!
+images: [Image !]! @relation(name:"ProductImages",onDelete: CASCADE)
+created: DateTime! @createdAt
+updated: DateTime! @updatedAt
+}
+
+type Image{
+  id: ID! @id
+  product: Product! @relation(name: "ProductImages")
+  uri: String!
+  filename: String!
+  encoding: String!
+}
+
+type Comment {
+  id: ID! @id
+  product: Product! @relation(name: "ProductComments")
+  author : User! @relation(name: "CommentsByUser")
+  rating: Float
+  content: String!
+  created: DateTime! @createdAt
+  updated: DateTime! @updatedAt
+}
+
+type Category {
+  id: ID! @id
+  title: String!
+  author: User!
+  products: [Product]! 
+}
+
+type Card {
+  id: ID! @id
+  author: User! @relation(link: INLINE)
+  products: [Product!]! @relation(name: "CardProduct")
+}

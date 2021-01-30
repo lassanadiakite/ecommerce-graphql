@@ -1,0 +1,23 @@
+{
+  "name": "prisma_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e js,graphql src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DIAKITELassana",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.19.1",
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.4",
+    "prisma-binding": "^2.3.16",
+    "validator": "^13.5.2"
+  }
+}

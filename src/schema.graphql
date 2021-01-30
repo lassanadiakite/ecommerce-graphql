@@ -1,0 +1,21 @@
+# import User, Query.user, Query.users, Mutation.updateUser, Mutation.createUser, Mutation.deleteUser, from "./generated/prisma.graphql"
+# import Post, Query.post, Query.posts, Mutation.updatePost, Mutation.createPost, Mutation.deletePost, from "./generated/prisma.graphql"
+# import Card, Query.card, Query.cards, Mutation.updateCard, Mutation.createCard, Mutation.deleteCard, from "./generated/prisma.graphql"
+# import Category, Query.category, Query.categories, Mutation.updateCategory, Mutation.createCategory, Mutation.deleteCategory, from "./generated/prisma.graphql"
+# import Comment, Query.comment, Query.comments, Mutation.updateComment, Mutation.createComment, Mutation.deleteComment, from "./generated/prisma.graphql"
+# import Product, Query.product, Query.products, Mutation.updateProduct, Mutation.createProduct, Mutation.deleteProduct, from "./generated/prisma.graphql"
+# import Image, Query.image, Query.images, Mutation.updateImage, Mutation.createImage, Mutation.deleteImage, from "./generated/prisma.graphql"
+
+type Query {
+  me: User
+}
+
+type Mutation {
+    signup(lastName: String!, firstName: String!, role: Role, email: String!, phone: String, password: String!): AuthPayload!
+    login(email: String!, password: String!): AuthPayload!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
